@@ -9,7 +9,7 @@
         body{
             position: relative;
             background-color: black;
-            cursor: none;
+            /* cursor: none; */
         }
         h1 {
             color: #fff;
@@ -21,6 +21,25 @@
             background-color: red;
             top:0;
             left:0;
+            margin: -50px 0 0 -50px;
+            transition: all 1000ms cubic-bezier(0.890, -0.505, 0.890, -0.505);
+            /* google 검색 css3 easeing */
+        }
+        button {
+            font-size: 40px;
+            font-weight: bold;
+            background: #fff;
+            color: red;
+            padding: 30px 80px;
+            margin: 50px;
+            cursor: pointer;
+            transition: all .5s
+        }
+        button:hover {
+            background: red;
+            color: #fff;
+            font-size: 150px;
+            padding: 100px 120px;
         }
     </style>
     <script>
@@ -35,18 +54,19 @@
         window.onload = function() {
             h1 = document.getElementsByTagName("h1")[0];
             cursor_item = document.getElementsByClassName("cursor_item")[0];
-            window.addEventListener("mousemove", mseFnc, false);
+            window.addEventListener("click", mseFnc, false);
 
             function mseFnc(e) {
                 x = e.clientX;
                 y = e.clientY;
-                
+                cursor_item.style.transform = "translate("+x+"px, "+y+"px)";
                 
                 
                 // console.log(e.clientX, e.clientY);
             }
-            loop();
+            // loop();
         }
+        /*
         function loop() {
             // console.log(x, y);
             mx += (x - mx) * speed;
@@ -57,11 +77,12 @@
             cursor_item.style.transform = "translate("+mx+"px, "+my+"px)";
             window.requestAnimationFrame(loop);    
         }
-        
+        */
     </script>
 </head>
 <body>
     <h1>test</h1>
     <div class="cursor_item"></div>
+    <button>START</button>
 </body>
 </html>
