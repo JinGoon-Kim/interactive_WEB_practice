@@ -12,17 +12,47 @@
             color : #fff;
             
         }
+        .progress {
+            position: fixed;
+            width: 100%;
+            height: 5px;
+            top: 0;
+            left: 0;
+            background-color: black;
+            z-index: 10;
+        }
+        .bar {
+            position: absolute;
+            width: 50%;
+            height: 5px;
+            top: 0;
+            left: 0;
+            background-color: yellow;
+            z-index: 11;
+        }
     </style>
     <script>
         let scrollTop = 0;
+        let bar;
+        
+        window.onload = function() {
+            bar = document.getElementsByClassName("bar")[0];
+        }
         
         window.addEventListener("scroll", function(e) {
             scrollTop = document.documentElement.scrollTop;
-            console.log("스크롤 값 : " + scrollTop);
+            // console.log("스크롤 값 : " + scrollTop);
+            let per = Math.ceil( scrollTop / (document.body.scrollHeight - window.outerHeight) * 100 );
+            console.log(per);
+            
+            bar.style.width =per + "%";
         }, false)
     </script>
 </head>
 <body>
     <h1>스크롤</h1>
+    <div class="progress">
+        <span class="bar"></span>
+    </div>
 </body>
 </html>
