@@ -26,7 +26,7 @@ window.onload = function() {
 }
 
 function scrollFunc(e) {
-    var scrollTop = document.documentElement.scrollTop;
+    scrollTop = document.documentElement.scrollTop;
 
     let per = Math.ceil(scrollTop / (_documentHum - windowHNum) *100)
     progressBar.style.width =per +"%";
@@ -54,7 +54,6 @@ function loop() {
 
     window.requestAnimationFrame(loop);
 }
-
 
 function mouseMove (e) {
 
